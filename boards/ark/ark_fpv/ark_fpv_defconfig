@@ -1,0 +1,25 @@
+# Copyright (c) 2026 ARK Electronics LLC
+# SPDX-License-Identifier: Apache-2.0
+
+# Cortex-M7 FPU (hard-float ABI is the default once FPU=y is set).
+CONFIG_FPU=y
+
+# MPU + HW stack protection
+CONFIG_ARM_MPU=y
+CONFIG_HW_STACK_PROTECTION=y
+
+# Console on USART3 (PD8/PD9 — matches betaflight DEBUG/MSP assignment).
+CONFIG_SERIAL=y
+CONFIG_CONSOLE=y
+CONFIG_UART_CONSOLE=y
+
+# GPIO + pinctrl + clock control
+CONFIG_GPIO=y
+CONFIG_PINCTRL=y
+CONFIG_CLOCK_CONTROL=y
+
+# LED API — wraps the gpio-leds nodes so the toy app can blink portably.
+CONFIG_LED=y
+
+# Soft reset for early bring-up debugging.
+CONFIG_REBOOT=y

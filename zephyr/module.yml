@@ -1,0 +1,12 @@
+# Copyright (c) 2026 ARK Electronics LLC
+# SPDX-License-Identifier: Apache-2.0
+#
+# Registers this repository as a Zephyr module so that custom boards
+# (boards/ark/ark_fpv), DT bindings (dts/bindings/), and out-of-tree drivers
+# (drivers/) are picked up automatically by the Zephyr build system.
+
+build:
+  cmake: .
+  settings:
+    board_root: .
+    dts_root: .

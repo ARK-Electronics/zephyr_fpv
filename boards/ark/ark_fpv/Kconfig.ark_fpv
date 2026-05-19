@@ -1,0 +1,5 @@
+# Copyright (c) 2026 ARK Electronics LLC
+# SPDX-License-Identifier: Apache-2.0
+
+config BOARD_ARK_FPV
+	select SOC_STM32H743XX

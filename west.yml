@@ -1,0 +1,35 @@
+# Copyright (c) 2026 ARK Electronics LLC
+# SPDX-License-Identifier: Apache-2.0
+#
+# West manifest for the ARK FPV Zephyr port.
+#
+# Layout when initialised from this manifest:
+#   <topdir>/                       — workspace root (the parent dir of this repo)
+#   <topdir>/zephyr_fpv/             — this manifest repo
+#   <topdir>/zephyr-v4.4.0/         — upstream Zephyr (pinned tag, see `path:` below)
+#   <topdir>/modules/...            — HAL modules pulled by Zephyr's own manifest
+#
+# The non-default `path: zephyr-v4.4.0` keeps the upstream checkout from
+# colliding with the sibling `zephyr/` reference tree that already lives at
+# the topdir for documentation purposes.
+
+manifest:
+  remotes:
+    - name: zephyrproject-rtos
+      url-base: https://github.com/zephyrproject-rtos
+
+  projects:
+    - name: zephyr
+      remote: zephyrproject-rtos
+      revision: v4.4.0
+      path: zephyr-v4.4.0
+      import:
+        # Restrict the imported sub-projects to what an STM32H7 board needs.
+        # Add more entries here as later phases land additional dependencies
+        # (e.g. tinycrypt, mcuboot, libcanard).
+        name-allowlist:
+          - cmsis        # legacy ARM CMSIS pulled in by the STM32 HAL
+          - cmsis_6      # current ARM CMSIS for Cortex-M
+          - hal_stm32    # STM32 HAL — required by the SoC
+          - fatfs        # FAT filesystem
+          - segger       # SystemView / RTT — optional, useful for debugging

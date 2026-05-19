@@ -1,0 +1,6 @@
+board:
+  name: ark_fpv
+  full_name: ARK FPV (STM32H743II flight controller)
+  vendor: ark
+  socs:
+    - name: stm32h743xx

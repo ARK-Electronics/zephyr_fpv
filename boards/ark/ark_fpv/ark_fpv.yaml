@@ -1,0 +1,15 @@
+identifier: ark_fpv
+name: ARK FPV
+type: mcu
+arch: arm
+toolchain:
+  - zephyr
+  - gnuarmemb
+ram: 1024
+flash: 2048
+supported:
+  - gpio
+  - serial
+  - uart
+  - led
+vendor: ark
